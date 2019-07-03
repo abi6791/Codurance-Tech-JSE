@@ -1,4 +1,7 @@
-package com.jseapplications;
+package com.jseapplications.Models;
+
+import com.jseapplications.Constants;
+import com.jseapplications.DateTimeUtil;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -15,6 +18,14 @@ public class Post {
 
     public String showPost() {
         return this.message + " (" + DateTimeUtil.getTimeAgo(this.time) + ")";
+    }
+
+    public String getMessage() {
+        return this.message;
+    }
+
+    public String getTime() {
+        return this.time;
     }
 
 }

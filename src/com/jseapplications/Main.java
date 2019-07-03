@@ -1,9 +1,13 @@
 package com.jseapplications;
 
+import com.jseapplications.Models.User;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.TreeMap;
 
 public class Main {
     //-- Stores information about users and posts
@@ -27,7 +31,6 @@ public class Main {
     private static void checkCommand(final String command) {
         //-- Split command by space
         String[] commands = command.split(" ");
-
         if (commands.length == 1) {
             //-- Command Is A Read, check user
             showUserPosts(commands[0]);
@@ -61,9 +64,16 @@ public class Main {
         }
         //-- Add User's post to list
         followedUsers.add(getUser(username));
-        //-- Show All Posts from Each user, displayed with username prefix
+        //-- Get All Posts from Each user, displayed with username prefix
+        TreeMap<String, String> postMap = new TreeMap<>();
         for (User user : followedUsers) {
-            user.displayPosts(true);
+            postMap.putAll(user.getPostMap());
+        }
+        //-- Reverse Map to show latest at the top
+        ArrayList<String> orderedPosts = new ArrayList<>(postMap.values());
+        Collections.reverse(orderedPosts);
+        for (String post : orderedPosts) {
+            System.out.println(post);
         }
     }
 
@@ -78,7 +88,6 @@ public class Main {
             //-- User exists, add post
             user.post(message);
             return;
-
         }
         //-- User doesn't exist, create and post
         User newUser = new User(username);

@@ -1,6 +1,9 @@
-package com.jseapplications;
+package com.jseapplications.Models;
+
+import com.jseapplications.DateTimeUtil;
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class User {
 
@@ -24,10 +27,6 @@ public class User {
         this.followsList.add(username);
     }
 
-    public ArrayList<Post> getPosts() {
-        return this.posts;
-    }
-
     public String getUsername() {
         return this.username;
     }
@@ -43,8 +42,18 @@ public class User {
         }
     }
 
+    public TreeMap<String, String> getPostMap() {
+        TreeMap<String, String> postMap = new TreeMap<>();
+        for (Post post : this.posts) {
+            postMap.put(post.getTime(), username + " - " + post.getMessage() + " (" + DateTimeUtil.getTimeAgo(post.getTime()) + ")");
+        }
+        return postMap;
+    }
+
 
     public ArrayList<String> getFollowed() {
         return this.followsList;
     }
+
+
 }

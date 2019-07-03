@@ -13,7 +13,7 @@ public class DateTimeUtil {
      * @param dateTime Date time string in the following format {@value Constants#DATE_TIME_FORMAT}
      * @return Human readable string with time ago
      * <p>
-     * Example: "5 Seconds Ago", "10 minutes ago"
+     * Example: "5 seconds Ago", "10 minutes ago", "1 hour ago"
      */
     public static String getTimeAgo(final String dateTime) {
         //-- Get current time and parse time of post
@@ -33,17 +33,32 @@ public class DateTimeUtil {
         long seconds = elapsed / 1000;
         long minutes = seconds / 60;
         long hours = minutes / 60;
-        //-- Check each style to return time accordingly
+        //-- Check each style to return time accordingly, adding plural s if needs be
         if (seconds > 60) {
             if (minutes > 60) {
-                return hours + " hours ago";
+                if (hours > 1) {
+                    return hours + " hours ago";
+                }
+                else {
+                    return hours + " hour ago";
+                }
             }
             else {
-                return minutes + " minutes ago";
+                if (minutes > 1) {
+                    return minutes + " minutes ago";
+                }
+                else {
+                    return minutes + " minute ago";
+                }
             }
         }
         else {
-            return " seconds ago";
+            if (seconds > 1) {
+                return seconds + " seconds ago";
+            }
+            else {
+                return seconds + " second ago";
+            }
         }
     }
 
