@@ -8,7 +8,7 @@ import java.util.Date;
 public class DateTimeUtil {
 
     /**
-     * Utility to convert date string to "x seconds/minutes/hours ago"
+     Utility to convert date string to "x seconds/minutes/hours ago" from the current time
      *
      * @param dateTime Date time string in the following format {@value Constants#DATE_TIME_FORMAT}
      * @return Human readable string with time ago
