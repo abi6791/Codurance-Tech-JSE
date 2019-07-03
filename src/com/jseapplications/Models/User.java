@@ -5,8 +5,15 @@ import com.jseapplications.DateTimeUtil;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+/**
+ * <h1>
+ * User
+ * </h1>
+ * This class provides and overall data structure for each User created
+ * in the system. Each user must must have a username which is used when
+ * creating posts or following another user
+ */
 public class User {
-
     //-- Stores username of user
     private String username;
     //-- Stores the usernames of the users this user is following
@@ -54,6 +61,5 @@ public class User {
     public ArrayList<String> getFollowed() {
         return this.followsList;
     }
-
 
 }
