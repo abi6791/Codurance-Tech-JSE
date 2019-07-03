@@ -21,4 +21,4 @@ Josh wall
 This command will show all the posts the user Josh and all of the users they are following. These posts
 are sorted by the most recent first.
 
-Thanks for using this awesome program, with power comes great responsibility.
+Thanks for using this awesome program, with great power comes great responsibility.
