@@ -18,9 +18,8 @@ public class Main {
             try {
                 String name = reader.readLine();
                 checkCommand(name);
-            } catch (IOException e) {
+            } catch (IOException | NullPointerException e) {
                 e.printStackTrace();
-                return;
             }
         }
     }
@@ -62,9 +61,10 @@ public class Main {
         }
         //-- Add User's post to list
         followedUsers.add(getUser(username));
-        //-- Convert all to String lines
-
-
+        //-- Show All Posts from Each user, displayed with username prefix
+        for (User user : followedUsers) {
+            user.displayPosts(true);
+        }
     }
 
     private static void followUser(final String username, final String usernameToFollow) {
@@ -88,9 +88,15 @@ public class Main {
 
     private static void showUserPosts(final String username) {
         //-- Check If User Exists and display posts
-        getUser(username).displayPosts();
+        getUser(username).displayPosts(false);
     }
 
+    /**
+     * Gets user associated with username in the system
+     *
+     * @param username Username to find
+     * @return User associated with the username
+     */
     private static User getUser(final String username) {
         for (User user : data) {
             if (user.getUsername().equals(username)) {

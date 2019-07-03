@@ -25,20 +25,26 @@ public class User {
     }
 
     public ArrayList<Post> getPosts() {
-        return posts;
+        return this.posts;
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
-    public void displayPosts() {
-        for (Post post : posts) {
-            System.out.println(post.showPost());
+    public void displayPosts(final boolean showUsername) {
+        for (Post post : this.posts) {
+            if (showUsername) {
+                System.out.println(this.username + " - " + post.showPost());
+            }
+            else {
+                System.out.println(post.showPost());
+            }
         }
     }
 
+
     public ArrayList<String> getFollowed() {
-        return followsList;
+        return this.followsList;
     }
 }
